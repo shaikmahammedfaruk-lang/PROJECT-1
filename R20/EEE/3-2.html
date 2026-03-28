@@ -49,6 +49,23 @@
             and Microcontrollers</a></h1>
     <h1><a href="https://drive.google.com/drive/folders/1_asal09QldtEaPRNLcR8UXuJSiy8yA3k?usp=sharing">Electrical
             Measurements and Instrumentation</a></h1>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script>
+        (async () => {
+            try {
+                const user = await checkAuth();
+                if (!user) {
+                    const redirect = window.location.pathname.substring(1);
+                    window.location.href = '../../login.html?redirect=' + redirect;
+                }
+            } catch (e) {
+                console.error('Auth error:', e);
+                const redirect = window.location.pathname.substring(1);
+                window.location.href = '../../login.html?redirect=' + redirect;
+            }
+        })();
+    </script>
 </body>
 
 </html>

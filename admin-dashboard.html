@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EASY WORLD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="EASY WORLD" class="sidebar-logo">
+                <span class="sidebar-title">Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tab="overview">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Overview</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="students">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Students</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="upload">
+                    <span class="nav-icon">📤</span>
+                    <span class="nav-text">Upload Materials</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="logout-btn" id="logout-btn">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="page-title">Admin Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <span>ADMIN</span>
+                        </div>
+                        <div class="user-details">
+                            <span class="user-name" id="user-name">Admin</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Overview Tab -->
+                <div class="tab-content active" id="tab-overview">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">👨‍🎓</div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-total-students">-</span>
+                                <span class="stat-label">Total Students</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">📈</div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-today-signups">-</span>
+                                <span class="stat-label">New Today</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">👥</div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-total-admins">-</span>
+                                <span class="stat-label">Admins</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">🎓</div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-courses">4</span>
+                                <span class="stat-label">Courses</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-sections">
+                        <div class="section-card">
+                            <h3>Students by Regulation</h3>
+                            <div class="chart-container" id="regulation-chart">
+                                <div class="chart-bar" data-regulation="R23">
+                                    <span class="bar-label">R23</span>
+                                    <div class="bar-fill-container">
+                                        <div class="bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span class="bar-value">0</span>
+                                </div>
+                                <div class="chart-bar" data-regulation="R20">
+                                    <span class="bar-label">R20</span>
+                                    <div class="bar-fill-container">
+                                        <div class="bar-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span class="bar-value">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-card">
+                            <h3>Recent Signups</h3>
+                            <div class="recent-list" id="recent-students">
+                                <p class="loading">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Students Tab -->
+                <div class="tab-content" id="tab-students">
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="Search by name or email...">
+                            <button class="search-btn">🔍</button>
+                        </div>
+                        <div class="filters">
+                            <select id="filter-role">
+                                <option value="">All Roles</option>
+                                <option value="student">Student</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            <select id="filter-college">
+                                <option value="">All Colleges</option>
+                            </select>
+                            <select id="filter-regulation">
+                                <option value="">All Regulations</option>
+                                <option value="R20">R20</option>
+                                <option value="R23">R23</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="students-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all"></th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>College</th>
+                                    <th>Regulation</th>
+                                    <th>Role</th>
+                                    <th>Joined</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-tbody">
+                                <tr><td colspan="8" class="loading">Loading students...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination" id="pagination"></div>
+
+                    <!-- Edit Student Modal -->
+                    <div class="modal" id="edit-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Edit Student</h3>
+                                <button class="modal-close">&times;</button>
+                            </div>
+                            <form id="edit-student-form">
+                                <input type="hidden" id="edit-student-id">
+                                <div class="form-group">
+                                    <label for="edit-name">Name</label>
+                                    <input type="text" id="edit-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-email">Email</label>
+                                    <input type="email" id="edit-email" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-college">College</label>
+                                    <input type="text" id="edit-college">
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-regulation">Regulation</label>
+                                    <select id="edit-regulation">
+                                        <option value="R20">R20</option>
+                                        <option value="R23">R23</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-role">Role</label>
+                                    <select id="edit-role">
+                                        <option value="student">Student</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                                <div class="modal-actions">
+                                    <button type="button" class="btn-secondary" id="cancel-edit">Cancel</button>
+                                    <button type="submit" class="btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Tab -->
+                <div class="tab-content" id="tab-upload">
+                    <div class="upload-container">
+                        <div class="upload-form card">
+                            <h3>Upload Course Materials</h3>
+                            <form id="upload-form" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="upload-title">Material Title</label>
+                                    <input type="text" id="upload-title" name="title" placeholder="e.g., CSE 3rd Sem Notes" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="upload-course">Course</label>
+                                        <select id="upload-course" name="course" required>
+                                            <option value="">Select Course</option>
+                                            <option value="CSE">CSE</option>
+                                            <option value="AIML">AIML</option>
+                                            <option value="ECE">ECE</option>
+                                            <option value="EEE">EEE</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="upload-branch">Branch</label>
+                                        <select id="upload-branch" name="branch" required>
+                                            <option value="">Select Branch</option>
+                                            <option value="R20">R20</option>
+                                            <option value="R23">R23</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="upload-description">Description</label>
+                                    <textarea id="upload-description" name="description" rows="3" placeholder="Brief description of the material"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="upload-file">File</label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" id="upload-file" name="file" required>
+                                        <div class="file-info" id="file-info"></div>
+                                    </div>
+                                    <small>Max size: 10MB. Allowed: PDF, DOC, PPT, XLS, images, archives</small>
+                                </div>
+                                <div class="upload-progress" style="display: none;">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="upload-progress"></div>
+                                    </div>
+                                    <span class="progress-text">Uploading...</span>
+                                </div>
+                                <button type="submit" class="btn-primary" id="upload-btn">
+                                    <span class="btn-text">Upload File</span>
+                                    <span class="spinner"></span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="uploads-list card">
+                            <h3>Recent Uploads</h3>
+                            <div class="uploads-grid" id="uploads-grid">
+                                <p class="no-uploads">No files uploaded yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="tab-content" id="tab-settings">
+                    <div class="card">
+                        <h3>System Settings</h3>
+                        <p class="placeholder-text">Settings panel coming soon. For now, manage system through PostgreSQL directly.</p>
+                        <div class="settings-section">
+                            <h4>Quick Actions</h4>
+                            <ul>
+                                <li><button class="btn-secondary" onclick="alert('Feature coming soon')">Export All Students to CSV</button></li>
+                                <li><button class="btn-secondary" onclick="alert('Feature coming soon')">Send Email to All Students</button></li>
+                                <li><button class="btn-secondary" onclick="alert('Feature coming soon')">System Backup</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert" id="alert" style="display: none;">
+        <span class="alert-message"></span>
+        <button class="alert-close">&times;</button>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

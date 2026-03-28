@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "css/*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "js/*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/**/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.jpg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.gif",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.mp4",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://YOUR_BACKEND_URL.railway.app/api/$1",
+      "continue": true
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

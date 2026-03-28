@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - EASY WORLD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/user-dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="EASY WORLD" class="sidebar-logo">
+                <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="overview">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Overview</span>
+                </a>
+                <a href="#" class="nav-item" data-section="courses">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-text">My Courses</span>
+                </a>
+                <a href="#" class="nav-item" data-section="profile">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Profile</span>
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="logout-btn" id="logout-btn">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+                    <h1 class="page-title">Student Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <div class="user-avatar" id="user-avatar">
+                            <img src="student.png" alt="User">
+                        </div>
+                        <div class="user-details">
+                            <span class="user-name" id="user-name">Loading...</span>
+                            <span class="user-role" id="user-role">Student</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="content">
+                <!-- Overview Section -->
+                <section class="section active" id="section-overview">
+                    <div class="welcome-banner">
+                        <div class="welcome-text">
+                            <h2>Welcome back, <span id="welcome-name">Student</span>!</h2>
+                            <p>Ready to continue your learning journey today?</p>
+                        </div>
+                        <div class="quick-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">📚</div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-courses">4</span>
+                                    <span class="stat-label">Available Courses</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🎯</div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-progress">0%</span>
+                                    <span class="stat-label">Progress</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📁</div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-resources">0</span>
+                                    <span class="stat-label">Resources</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="card course-access">
+                            <h3>Quick Access - Courses</h3>
+                            <p>Select your branch to explore course materials</p>
+                            <div class="course-list">
+                                <a href="#" class="course-item" data-course="CSE">
+                                    <div class="course-icon">💻</div>
+                                    <div class="course-info">
+                                        <h4>Computer Science (CSE)</h4>
+                                        <p>R23 Branch</p>
+                                    </div>
+                                    <span class="arrow">→</span>
+                                </a>
+                                <a href="#" class="course-item" data-course="AIML">
+                                    <div class="course-icon">🤖</div>
+                                    <div class="course-info">
+                                        <h4>AI & Machine Learning</h4>
+                                        <p>AIML Branch</p>
+                                    </div>
+                                    <span class="arrow">→</span>
+                                </a>
+                                <a href="#" class="course-item" data-course="ECE">
+                                    <div class="course-icon">📡</div>
+                                    <div class="course-info">
+                                        <h4>Electronics & Comm</h4>
+                                        <p>ECE Branch</p>
+                                    </div>
+                                    <span class="arrow">→</span>
+                                </a>
+                                <a href="#" class="course-item" data-course="EEE">
+                                    <div class="course-icon">⚡</div>
+                                    <div class="course-info">
+                                        <h4>Electrical & Electronics</h4>
+                                        <p>EEE Branch</p>
+                                    </div>
+                                    <span class="arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card profile-summary">
+                            <h3>Your Profile</h3>
+                            <div class="profile-info">
+                                <div class="info-row">
+                                    <span class="label">Name:</span>
+                                    <span class="value" id="profile-name">-</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Email:</span>
+                                    <span class="value" id="profile-email">-</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">College:</span>
+                                    <span class="value" id="profile-college">-</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Regulation:</span>
+                                    <span class="value" id="profile-regulation">-</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Role:</span>
+                                    <span class="value" id="profile-role">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list" id="activity-list">
+                                <div class="activity-item">
+                                    <span class="activity-icon">📖</span>
+                                    <div class="activity-info">
+                                        <p>Welcome to your dashboard!</p>
+                                        <span class="activity-time">Just now</span>
+                                    </div>
+                                </div>
+                                <!-- More items would come from API -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Courses Section (placeholder for future enhancement) -->
+                <section class="section" id="section-courses">
+                    <h2>My Courses</h2>
+                    <p>Course management coming soon. Use the quick access links above for now.</p>
+                </section>
+
+                <!-- Profile Section -->
+                <section class="section" id="section-profile">
+                    <div class="card">
+                        <h2>My Profile</h2>
+                        <form id="profile-form" class="profile-form">
+                            <div class="form-group">
+                                <label for="edit-name">Full Name</label>
+                                <input type="text" id="edit-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-email">Email (cannot be changed)</label>
+                                <input type="email" id="edit-email" name="email" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-college">College</label>
+                                <input type="text" id="edit-college" name="college" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-regulation">Regulation</label>
+                                <input type="text" id="edit-regulation" name="regulation" readonly>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">Save Changes</button>
+                                <button type="button" class="btn-secondary" id="cancel-edit">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section class="section" id="section-settings">
+                    <div class="card">
+                        <h2>Settings</h2>
+                        <form id="password-form" class="settings-form">
+                            <h3>Change Password</h3>
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" name="currentPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" name="newPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm New Password</label>
+                                <input type="password" id="confirm-password" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Update Password</button>
+                        </form>
+
+                        <!-- API Key Management -->
+                        <div class="card api-keys-card" style="margin-top: 2rem;">
+                            <div class="card-header">
+                                <h3>API Keys</h3>
+                                <button class="btn-primary" id="create-api-key-btn">Generate New API Key</button>
+                            </div>
+                            <p class="description">Use API keys to access the programmatically. Keep your keys secure and do not share them.</p>
+
+                            <!-- API Keys List -->
+                            <div class="api-keys-list" id="api-keys-list">
+                                <p class="loading">Loading API keys...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert" id="alert" style="display: none;">
+        <span class="alert-message"></span>
+        <button class="alert-close">&times;</button>
+    </div>
+
+    <!-- API Key Modal (Create/Edit) -->
+    <div class="modal" id="api-key-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">API Key</h3>
+                <button class="modal-close" id="api-key-modal-close">&times;</button>
+            </div>
+            <form id="api-key-form">
+                <input type="hidden" id="api-key-id">
+                <div class="form-group">
+                    <label for="api-key-name">Key Name</label>
+                    <input type="text" id="api-key-name" name="keyName" placeholder="e.g., My Mobile App" required>
+                </div>
+                <div class="form-group">
+                    <label for="api-key-active">Active</label>
+                    <select id="api-key-active" name="isActive">
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="api-key-expires">Expiration (optional)</label>
+                    <input type="datetime-local" id="api-key-expires" name="expiresAt">
+                </div>
+                <div class="api-key-display" id="api-key-display" style="display: none; background: #f0f0f0; padding: 10px; border-radius: 4px; margin-top: 10px; word-break: break-all;">
+                    <strong>Your API Key:</strong> <span id="plain-api-key"></span>
+                    <p class="warning">Save this key now! It will not be shown again.</p>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancel-api-key">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/user-dashboard.js"></script>
+</body>
+</html>

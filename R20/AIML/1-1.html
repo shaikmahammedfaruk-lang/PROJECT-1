@@ -51,6 +51,23 @@
             for Problem Solving using C</a></h1>
     <h1><a href="https://drive.google.com/drive/folders/1w6TZ1V-29WWZTLjKbQuzmaOJbW4Qhaii?usp=sharing">Computer
             Engineering Workshop</a></h1>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script>
+        (async () => {
+            try {
+                const user = await checkAuth();
+                if (!user) {
+                    const redirect = window.location.pathname.substring(1);
+                    window.location.href = '../../login.html?redirect=' + redirect;
+                }
+            } catch (e) {
+                console.error('Auth error:', e);
+                const redirect = window.location.pathname.substring(1);
+                window.location.href = '../../login.html?redirect=' + redirect;
+            }
+        })();
+    </script>
 </body>
 
 </html>
