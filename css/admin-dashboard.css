@@ -940,7 +940,7 @@ body {
     margin-left: 10px;
 }
 
-.btn-primary.loading . btn-text {
+.btn-primary.loading .btn-text {
     display: none;
 }
 
